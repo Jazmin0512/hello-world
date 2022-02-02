@@ -1,0 +1,9 @@
+version: "3"
+services:
+  frontend:
+    build:
+      context: .
+    image: hello_world_image
+    container_name: hello_world_container
+    ports:
+      - "3000:80"
