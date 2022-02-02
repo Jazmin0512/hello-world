@@ -36,6 +36,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: create docker container
-      run: docker-compose up
+      run: docker-compose up --no-start 
+      
       
     
