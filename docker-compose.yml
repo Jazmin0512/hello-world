@@ -4,6 +4,16 @@ services:
     build:
       context: .
     image: hello_world_image
-    container_name: helloWorld_container
+    container_name: hello_world_container
     ports:
       - "3000:80"
+
+  ansible:
+    build: 
+      context: ./ansible_base
+      dockerfile: Dockerfile
+    container_name: ansible_controller
+    volumes:
+      - type: bind
+        source: ./ansible_files
+        target: /home/ansible_controller/ansible_files
