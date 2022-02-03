@@ -3,6 +3,7 @@ services:
   frontend:
     build:
       context: .
+      dockerfile: Dockerfile
     image: hello_world_image
     container_name: hello_world_container
     ports:
