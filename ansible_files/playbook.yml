@@ -1,22 +1,12 @@
-- name: My first playbook
+- name: Ansible playbook
   hosts: all
-  vars_files:
-  - "vars/additional_vars"
   tasks:
     - name: Ping check
       ping: 
-    - name: Create a file
-      # vars:
-      #   filename: anotherhello
-      command: sudo touch /home/ansible_controller/hello.txt
-
-    - name: Install Packages
-      become: yes
-      apt:
-        name: "{{ softwares }}"
-        update_cache: yes
-        state: present
-      # loop:
-      #   - jq
-      #   - apache2
-      #   - vim
+    - name: Updating App
+      replace:
+        path: /home/ansible_controller/src/App.js
+        regexp: '\bWorld\b'
+        replace: 'DevOps'
+    - name: Run App
+      command: sudo npm run start
