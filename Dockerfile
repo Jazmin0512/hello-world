@@ -1,6 +1,7 @@
 # FROM node:16.13.2-buster
 FROM ubuntu:20.04
 
+#Ansible build
 RUN apt-get update  -y \
     && apt-get upgrade -y \ 
     && apt-get install -y \
@@ -23,6 +24,7 @@ RUN echo "ansible_controller ALL=(ALL:ALL) NOPASSWD: ALL" |  EDITOR="tee -a"  vi
 
 RUN mkdir -p /home/ansible_controller/.ssh
 
+#App build
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 RUN apt-get update
@@ -43,5 +45,5 @@ COPY . .
 # COPY --from=build /app/build /usr/share/nginx/html
 # EXPOSE 80
 
-# CMD ["nginx", "-g", "daemon off;", "/bin/bash", "/home/ansible_controller/startup.sh" ]
+# CMD ["nginx", "-g", "daemon off;" ]
 CMD ["/bin/bash", "/home/ansible_controller/startup.sh"]
